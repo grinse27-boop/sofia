@@ -1,0 +1,86 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #FFFFFF;
+    --secondary-text-color: #AAAAAA;
+    --separator-color: #333333;
+    --font-heading: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: var(--font-mono);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+}
+.page-header { text-align: center; margin-bottom: 40px; }
+.page-header h1 {
+    font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 5px;
+}
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    font-family: var(--font-mono);
+    background-color: transparent;
+    border: 1px solid var(--separator-color);
+    color: var(--secondary-text-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+.filter-btn.active {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
+}
+.gallery-grid {
+    column-count: 3;
+    column-gap: 15px;
+}
+.gallery-item {
+    margin-bottom: 15px;
+    break-inside: avoid;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+@media (max-width: 900px) { .gallery-grid { column-count: 2; } }
+@media (max-width: 600px) { .gallery-grid { column-count: 1; } }
+
+/* ================================== */
+/*      АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ       */
+/* ================================== */
+
+@media (max-width: 768px) {
+    /* Главные заголовки страниц (H1) */
+    .page-header h1, .hero-content h1 {
+        font-size: 1.8rem; /* Уменьшаем размер шрифта */
+        letter-spacing: 2px; /* Уменьшаем расстояние между буквами */
+    }
+
+    /* Подзаголовки секций (H2) */
+    .content-section h2, .timeline-content h2 {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        letter-spacing: 1.5px; /* Уменьшаем расстояние между буквами */
+    }
+}

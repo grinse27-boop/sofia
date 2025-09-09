@@ -1,0 +1,142 @@
+:root {
+    --bg-color: #121212;
+    --card-bg-color: #1A1A1A;
+    --text-color: #FFFFFF;
+    --secondary-text-color: #AAAAAA;
+    --separator-color: #333333;
+    --font-heading: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: var(--font-mono);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.story-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+}
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.page-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+}
+.timeline {
+    position: relative;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--separator-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+.timeline-item:nth-child(odd) { left: 50%; }
+.timeline-item:nth-child(even) { left: 0; }
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 50%;
+    top: 25px;
+    z-index: 1;
+}
+.timeline-item:nth-child(odd)::after { right: -8px; }
+.timeline-item:nth-child(even)::after { left: -8px; }
+.timeline-content {
+    padding: 20px;
+    background-color: var(--card-bg-color);
+    border-radius: 6px;
+    border: 1px solid var(--separator-color);
+}
+.timeline-content .date {
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 10px;
+    display: block;
+}
+.timeline-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+.timeline-content img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.timeline-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+}
+
+/* ================================== */
+/*      АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ       */
+/* ================================== */
+
+@media (max-width: 768px) {
+    /* Главные заголовки страниц (H1) */
+    .page-header h1, .hero-content h1 {
+        font-size: 1.8rem; /* Уменьшаем размер шрифта */
+        letter-spacing: 2px; /* Уменьшаем расстояние между буквами */
+    }
+
+    /* Подзаголовки секций (H2) */
+    .content-section h2, .timeline-content h2 {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        letter-spacing: 1.5px; /* Уменьшаем расстояние между буквами */
+    }
+}
+
+/* ================================== */
+/*      АДАПТАЦИЯ ТАЙМЛАЙНА           */
+/* ================================== */
+
+@media (max-width: 768px) {
+    /* Перемещаем центральную линию влево */
+    .timeline::after {
+        left: 20px; /* Фиксируем линию на 20px от левого края */
+    }
+
+    /* Делаем все элементы таймлайна на 100% ширины */
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;  /* Оставляем место для линии и кружка */
+        padding-right: 15px; /* Уменьшаем правый отступ */
+    }
+
+    /* Отменяем позиционирование слева/справа для ВСЕХ элементов */
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    /* Перемещаем кружочки на новую позицию слева */
+    .timeline-item::after {
+        left: 12px; /* Позиционируем кружок точно на линии */
+    }
+    
+    /* Отменяем правое позиционирование кружка для нечетных элементов */
+    .timeline-item:nth-child(odd)::after {
+        right: auto;
+    }
+}

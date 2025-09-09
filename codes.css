@@ -1,0 +1,115 @@
+:root {
+    --bg-color: #121212;
+    --card-bg-color: #1A1A1A;
+    --text-color: #FFFFFF;
+    --secondary-text-color: #AAAAAA;
+    --separator-color: #333333;
+    --font-heading: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: var(--font-mono);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+}
+.page-header { text-align: center; margin-bottom: 40px; }
+.page-header h1 {
+    font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 5px;
+}
+.content-section { margin-bottom: 60px; }
+.content-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--separator-color);
+    padding-bottom: 10px;
+}
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    gap: 20px;
+}
+.scroll-container::-webkit-scrollbar { display: none; }
+.scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
+.item-card {
+    flex: 0 0 180px;
+    border: 1px solid var(--separator-color);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.item-card:hover { transform: translateY(-5px); }
+.item-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+.item-card .item-title {
+    padding: 10px;
+    font-size: 0.9rem;
+    white-space: normal;
+    text-align: center;
+    background-color: var(--card-bg-color);
+}
+.map-container { position: relative; width: 100%; margin-top: 20px; }
+.world-map { width: 100%; fill: var(--separator-color); }
+.map-pin { position: absolute; cursor: pointer; }
+.pin {
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+.pin-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease, bottom 0.3s ease;
+    pointer-events: none;
+}
+.map-pin:hover .pin-label { opacity: 1; bottom: 25px; }
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+.pin-tokyo { top: 38%; left: 83%; }
+.pin-rome { top: 35%; left: 51%; }
+.pin-iceland { top: 18%; left: 45%; }
+
+/* ================================== */
+/*      АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ       */
+/* ================================== */
+
+@media (max-width: 768px) {
+    /* Главные заголовки страниц (H1) */
+    .page-header h1, .hero-content h1 {
+        font-size: 1.8rem; /* Уменьшаем размер шрифта */
+        letter-spacing: 2px; /* Уменьшаем расстояние между буквами */
+    }
+
+    /* Подзаголовки секций (H2) */
+    .content-section h2, .timeline-content h2 {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        letter-spacing: 1.5px; /* Уменьшаем расстояние между буквами */
+    }
+}
